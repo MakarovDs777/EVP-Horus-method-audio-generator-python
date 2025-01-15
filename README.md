@@ -6,6 +6,16 @@ And in short, such a bombastic idea came to my mind. I don't know if I'm the fir
 
 2) The shuffled bytes are converted back to the bytes object.
 
+And anyway, I did it with a couple of music tracks, and that's what I got.:
+
+https://disk.yandex.ru/d/0ToC8ynmL-8yGQ
+
+At 0:20, you can clearly hear "Save us!" at 0:40 "Forgive us!" at 0:52 "Vazgen!" 01:08 "You're different" what's that like... 01:17 "Let us go" at 01:28 Pussy dash? 02:08 Are you normal? 02:12 calm down... 02:31 who are you? 02:38 What's the deal!? 02:45 Ira!
+
+This audio track is based on KSHMR_Marnik__Bazaar_Officiel_Sunburn_Goa_2015_Anthem_EDM
+
+There is an idea to improve the video by mixing not the bits in the video, but by splitting them into a random sequence of tiles, say from 1 to 10 bits, and then you can achieve a more effective result, I think...
+
 # Broken-audio-sound-generator-python-(Version-2)
 
 Here is the second version, which is good in its own way... Only some sequences are half mixed, and some are not mixed and then mixed together in audio, but it does not work with video.
