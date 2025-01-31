@@ -6,6 +6,8 @@ And in short, such a bombastic idea came to my mind. I don't know if I'm the fir
 
 2) The shuffled bytes are converted back to the bytes object.
 
+https://github.com/user-attachments/assets/986cab5d-224b-4ad7-921d-77cd4971aec3
+
 # Broken-audio-sound-generator-python-(Version-2)
 
 Here is the second version, which is good in its own way... Only some sequences are half mixed, and some are not mixed and then mixed together in audio, but it does not work with video.
