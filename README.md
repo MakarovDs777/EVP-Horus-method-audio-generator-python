@@ -1,20 +1,20 @@
 # Broken-audio-sound-generator-python-(Version-1)
 
-And in short, such a bombastic idea came to my mind. I don't know if I'm the first to do this on the planet, but figure out what it would be like to take a video and break up a mosaic of bits in the video, and in short, assemble these bits back into the video by randomly mixing them together like mosaics, and how such a generator would turn out. random broken videos... And in short, I wrote this code, but it doesn't work with all videos, but it works fine with audio.
+Короче говоря, мне в голову пришла такая напыщенная идея. Я не знаю, первый ли я, кто делает это на планете, но представьте, каково это - взять видео и разложить на мозаику из фрагментов в видео, и, короче говоря, собрать эти фрагменты обратно в видео, случайным образом смешивая их вместе, как мозаику, и как бы такое... получился бы генератор случайные сломанных видео... Короче говоря, я написал этот код, но он работает не со всеми видео, но отлично работает со звуком.
 
-1) In the select_video_to_bytes() function, shuffle an array of bytes using random.shuffle().
+1) В функции select_video_to_bytes() происходит перетасовка массива байтов с помощью random.shuffle().
 
-2) The shuffled bytes are converted back to the bytes object.
+2) Перетасованные байты преобразуются обратно в объект bytes.
 
 https://github.com/user-attachments/assets/986cab5d-224b-4ad7-921d-77cd4971aec3
 
 # Broken-audio-sound-generator-python-(Version-2)
 
-Here is the second version, which is good in its own way... Only some sequences are half mixed, and some are not mixed and then mixed together in audio, but it does not work with video.
+Вот вторая версия, которая по-своему хороша но она смешиваете мозаики битов в процентном сосотношении... Только некоторые отрывки смикшированы наполовину, а некоторые не смикшированы и затем сведены вместе в аудио, но это не работает с видео.
 
-1) Now 80% of the bytes are shuffled (you can change this value), leaving the remaining 20% in their original position to preserve video playback.
+1) Теперь 80% байт перетасованы (вы можете изменить это значение), оставив оставшиеся 20% в исходном положении для сохранения воспроизведения видео.
 
-2) The array of shuffled bytes is combined with the unmixed bytes, which allows you to play the video without errors.
+2) Массив перетасованных байтов объединяется с несмешанными байтами, что позволяет воспроизводить видео без ошибок.
 
 # Broken-audio-sound-generator-python-(Version-3)
 
