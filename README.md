@@ -15,3 +15,7 @@ Here is the second version, which is good in its own way... Only some sequences 
 1) Now 80% of the bytes are shuffled (you can change this value), leaving the remaining 20% in their original position to preserve video playback.
 
 2) The array of shuffled bytes is combined with the unmixed bytes, which allows you to play the video without errors.
+
+# Broken-audio-sound-generator-python-(Version-3)
+
+В третей микрофонной версии я добавил вомзожмность записывать через микрофон, и потом его проводить записанный через Хорус.
