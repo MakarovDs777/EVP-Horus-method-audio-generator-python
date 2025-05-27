@@ -18,11 +18,20 @@ selected_audios = []
 # Создаем интерфейс
 root = tk.Tk()
 root.title("Конвертер аудио в ЭГФ")
-root.geometry("500x400")
+root.geometry("600x500")
 
 # Listbox для отображения выбранных аудио
 audio_listbox = tk.Listbox(root, width=60, height=10)
 audio_listbox.pack(pady=10)
+
+# Поле для ввода длительности
+duration_frame = tk.Frame(root)
+duration_frame.pack(pady=5)
+
+tk.Label(duration_frame, text="Длительность ЭГФ (мин):").pack(side=tk.LEFT)
+duration_entry = tk.Entry(duration_frame, width=5)
+duration_entry.insert(0, "2")  # по умолчанию 2 минуты
+duration_entry.pack(side=tk.LEFT)
 
 def select_audio():
     file_path = filedialog.askopenfilename(
@@ -38,6 +47,15 @@ def create_eghf_from_audios():
         messagebox.showerror("Ошибка", "Пожалуйста, выберите хотя бы один аудио файл.")
         return
     
+    try:
+        duration_minutes = float(duration_entry.get())
+        if duration_minutes <= 0:
+            raise ValueError
+    except ValueError:
+        messagebox.showerror("Ошибка", "Пожалуйста, введите корректную длительность (>0).")
+        return
+
+    target_duration_ms = int(duration_minutes * 60 * 1000)  # переводим в миллисекунды
     header_length = 100
     block_size = 64
     combined_bytes = bytearray()
