@@ -2,63 +2,27 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import os
 import random
+from pydub import AudioSegment
 
-# Для работы с аудио
+# Глобальный список выбранных аудио
+selected_audios = []
+
 def convert_audio_to_bytes(path):
-    with open(path, 'rb') as file:
-        return file.read()
+    with open(path, 'rb') as f:
+        return f.read()
 
 def save_bytes_as_audio(byte_data, output_path):
     with open(output_path, 'wb') as f:
         f.write(byte_data)
 
-# Глобальный список выбранных аудио
-selected_audios = []
+def create_eghf():
+    # Получаем длину в секундах из поля ввода
+    duration_sec = int(entry_duration.get())
+    duration_ms = duration_sec * 1000
 
-# Создаем интерфейс
-root = tk.Tk()
-root.title("Конвертер аудио в ЭГФ")
-root.geometry("600x500")
-
-# Listbox для отображения выбранных аудио
-audio_listbox = tk.Listbox(root, width=60, height=10)
-audio_listbox.pack(pady=10)
-
-# Поле для ввода длительности
-duration_frame = tk.Frame(root)
-duration_frame.pack(pady=5)
-
-tk.Label(duration_frame, text="Длительность ЭГФ (мин):").pack(side=tk.LEFT)
-duration_entry = tk.Entry(duration_frame, width=5)
-duration_entry.insert(0, "2")  # по умолчанию 2 минуты
-duration_entry.pack(side=tk.LEFT)
-
-def select_audio():
-    file_path = filedialog.askopenfilename(
-        title="Выберите аудио файл",
-        filetypes=[("Audio files", "*.mp3;*.wav;*.ogg")]
-    )
-    if file_path:
-        selected_audios.append(file_path)
-        audio_listbox.insert(tk.END, file_path)
-
-def create_eghf_from_audios():
-    if not selected_audios:
-        messagebox.showerror("Ошибка", "Пожалуйста, выберите хотя бы один аудио файл.")
-        return
-    
-    try:
-        duration_minutes = float(duration_entry.get())
-        if duration_minutes <= 0:
-            raise ValueError
-    except ValueError:
-        messagebox.showerror("Ошибка", "Пожалуйста, введите корректную длительность (>0).")
-        return
-
-    target_duration_ms = int(duration_minutes * 60 * 1000)  # переводим в миллисекунды
+    combined_bytes = bytearray()
     header_length = 100
     block_size = 64
-    combined_bytes = bytearray()
 
     for audio_path in selected_audios:
         byte_data = convert_audio_to_bytes(audio_path)
@@ -72,13 +36,47 @@ def create_eghf_from_audios():
         shuffled_byte_data = bytes(byte_list)
         combined_bytes.extend(shuffled_byte_data)
 
-    # Сохраняем объединенный файл
-    output_path = os.path.join(os.path.expanduser("~"), "Desktop", "evp_audio.wav")
-    save_bytes_as_audio(combined_bytes, output_path)
-    messagebox.showinfo("Готово", f"ЭГФ создан: {output_path}")
+    # Обрезаем итоговый байтовый поток до нужной длины
+    # Предполагается, что байты — это 16-битный звук, т.е. 2 байта на сэмпл
+    # Тогда длина в байтах = (длина в миллисекундах / 1000) * частота * число каналов * 2
+    # Но для простоты, можно просто взять первые N байт, соответствующие нужной длительности
+    # Например, если частота 44100 Гц, 2 канала, 2 байта на сэмпл:
+    sample_rate = 44100
+    channels = 2
+    bytes_per_sample = 2
+    total_bytes = int((duration_sec * sample_rate * channels * bytes_per_sample))
+    trimmed_bytes = combined_bytes[:total_bytes]
 
-# Кнопки
+    # Создаем аудио из байтов
+    output_path = os.path.join(os.path.expanduser("~"), "Desktop", "evp_audio.mp4")
+    save_bytes_as_audio(trimmed_bytes, output_path)
+    messagebox.showinfo("Готово", f"ЭГФ сохранен: {output_path}")
+
+# Создаем интерфейс
+root = tk.Tk()
+root.title("Создание ЭГФ из аудио")
+root.geometry("500x400")
+
+# Поле для ввода длины
+tk.Label(root, text="Длина ЭГФ (сек):").pack(pady=5)
+entry_duration = tk.Entry(root)
+entry_duration.pack(pady=5)
+entry_duration.insert(0, "60")  # по умолчанию 10 секунд
+
+# Кнопка выбора аудио
+def select_audio():
+    file_path = filedialog.askopenfilename(
+        title="Выберите аудио файл",
+        filetypes=[("Audio files", "*.mp3;*.wav;*.ogg")]
+    )
+    if file_path:
+        selected_audios.append(file_path)
+        listbox.insert(tk.END, file_path)
+
+listbox = tk.Listbox(root, width=60)
+listbox.pack(pady=10)
+
 tk.Button(root, text="Выбрать аудио", command=select_audio).pack(pady=5)
-tk.Button(root, text="Превратить в ЭГФ сразу", command=create_eghf_from_audios).pack(pady=5)
+tk.Button(root, text="Создать ЭГФ", command=create_eghf).pack(pady=5)
 
 root.mainloop()
