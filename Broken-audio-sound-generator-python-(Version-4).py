@@ -18,8 +18,6 @@ def save_bytes_as_audio(byte_data, output_path):
 def create_eghf():
     # Получаем длину в секундах из поля ввода
     duration_sec = int(entry_duration.get())
-    duration_ms = duration_sec * 1000
-
     combined_bytes = bytearray()
     header_length = 100
     block_size = 64
@@ -37,10 +35,6 @@ def create_eghf():
         combined_bytes.extend(shuffled_byte_data)
 
     # Обрезаем итоговый байтовый поток до нужной длины
-    # Предполагается, что байты — это 16-битный звук, т.е. 2 байта на сэмпл
-    # Тогда длина в байтах = (длина в миллисекундах / 1000) * частота * число каналов * 2
-    # Но для простоты, можно просто взять первые N байт, соответствующие нужной длительности
-    # Например, если частота 44100 Гц, 2 канала, 2 байта на сэмпл:
     sample_rate = 44100
     channels = 2
     bytes_per_sample = 2
@@ -61,22 +55,39 @@ root.geometry("500x400")
 tk.Label(root, text="Длина ЭГФ (сек):").pack(pady=5)
 entry_duration = tk.Entry(root)
 entry_duration.pack(pady=5)
-entry_duration.insert(0, "60")  # по умолчанию 10 секунд
+entry_duration.insert(0, "60")  # по умолчанию 60 секунд
 
-# Кнопка выбора аудио
+# Область для списка выбранных файлов
+listbox = tk.Listbox(root, width=60)
+listbox.pack(pady=10)
+
+# Кнопка выбора файла
 def select_audio():
+    global selected_audios
     file_path = filedialog.askopenfilename(
         title="Выберите аудио файл",
-        filetypes=[("Audio files", "*.mp3;*.wav;*.ogg")]
+        filetypes=[("Audio files", ".mp3;.wav;*.ogg")]
     )
     if file_path:
         selected_audios.append(file_path)
         listbox.insert(tk.END, file_path)
 
-listbox = tk.Listbox(root, width=60)
-listbox.pack(pady=10)
-
 tk.Button(root, text="Выбрать аудио", command=select_audio).pack(pady=5)
+
+# --- Кнопка "Удалить выбранное" ---
+def remove_selected():
+    global selected_audios
+    selected_indices = listbox.curselection()
+    if not selected_indices:
+        messagebox.showwarning("Предупреждение", "Выберите файл для удаления.")
+        return
+    for index in reversed(selected_indices):
+        listbox.delete(index)
+        del selected_audios[index]
+
+tk.Button(root, text="Удалить выбранное", command=remove_selected).pack(pady=5)
+
+# --- Кнопка "Создать ЭГФ" ---
 tk.Button(root, text="Создать ЭГФ", command=create_eghf).pack(pady=5)
 
 root.mainloop()
