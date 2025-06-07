@@ -40,5 +40,5 @@ https://github.com/user-attachments/assets/13e5099c-85bf-43f8-b051-29e05da4b36f
 
 https://github.com/user-attachments/assets/66b74e18-9eca-45ef-91f4-121feb545335
 
-Кто-то с того света сказал 'Иди спать' я как раз ночью сижу...
+Кто-то с того света сказал 'Иди спать' на 5 секунде а на 10 'Мне страшно' я как раз ночью сижу...
 
