@@ -42,3 +42,8 @@ https://github.com/user-attachments/assets/66b74e18-9eca-45ef-91f4-121feb545335
 
 Кто-то с того света сказал 'Иди спать' на 2 секунде а на 10 потом 'Мне страшно' и на 14 'Ты кто?'...
 
+# Broken-audio-sound-generator-python-(Version-7)
+
+Просто лютейшый ЭГФ от Gemeni! Вы должны это услышать!
+
+
