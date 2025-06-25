@@ -46,4 +46,7 @@ https://github.com/user-attachments/assets/66b74e18-9eca-45ef-91f4-121feb545335
 
 Просто лютейшый ЭГФ от Gemeni! Вы должны это услышать!
 
+https://github.com/user-attachments/assets/fe24b7a7-dade-46d5-b4c5-b0f34fb223e4
+
+Я так же добавил две кнопки 'Текст байтов в 0 и 1', и 'Текст 0 и 1 в текст байтов'. 
 
