@@ -52,6 +52,10 @@ https://github.com/user-attachments/assets/fe24b7a7-dade-46d5-b4c5-b0f34fb223e4
 
 # Broken-audio-sound-generator-python-(Version-8)
 
+И эта 8 версия ЭГФ Хоруса которая является продолжением 7 версии только теперь можно делать из множества файлов а не только из 1 файла ЭГФ, конвертировать в кашу байтов, 0, и 1.
+
+
+
 # Broken-audio-sound-generator-python-(Version-9)
 
 Ну девятая версия мой небольшой эксперимент по превращению байтовый каши ЭГФ Хоруса в видео...
