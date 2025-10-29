@@ -50,3 +50,11 @@ https://github.com/user-attachments/assets/fe24b7a7-dade-46d5-b4c5-b0f34fb223e4
 
 Я так же добавил две кнопки 'Текст байтов в 0 и 1', и 'Текст 0 и 1 в текст байтов'. 
 
+# Broken-audio-sound-generator-python-(Version-8)
+
+# Broken-audio-sound-generator-python-(Version-9)
+
+Ну девятая версия мой небольшой эксперимент по превращению байтовый каши ЭГФ Хоруса в видео...
+
+https://github.com/user-attachments/assets/7b1c9ef1-1633-4ea8-b81b-1afe92d1cd53
+
