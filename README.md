@@ -56,6 +56,9 @@ https://github.com/user-attachments/assets/fe24b7a7-dade-46d5-b4c5-b0f34fb223e4
 
 https://github.com/user-attachments/assets/b3ed8b05-6f3b-4433-9a7d-8624b1a2fba0
 
+https://github.com/user-attachments/assets/eba72e06-a20d-4d17-972c-42ecd7717071
+
+
 ЭГФ работает я спросил какой лотерейный билет купить, и на 11 секунде слышно 'ДимОн ты ту!?', и потом на 32 секунде слышно 'сорок второй' типа отсылка на число 42 которое является ответом на все вопросы вселенной.
 
 # Broken-audio-sound-generator-python-(Version-9)
