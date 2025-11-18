@@ -64,6 +64,8 @@ https://github.com/user-attachments/assets/5b9b618a-bbc3-43dd-8b45-52132da1f5bb
 
 https://github.com/user-attachments/assets/7b1c9ef1-1633-4ea8-b81b-1afe92d1cd53
 
+# ...
+
 ![Zapis&#39;-2025-08-30-15-51-14-204](https://github.com/user-attachments/assets/9394e90f-3ed7-4203-9a63-e535a8e61e1c)
 
 Вот что случается когда непостижимая сила сталкивается с недостижимым объектом! Я думаю мы с тобой обречены бороться вечно!
